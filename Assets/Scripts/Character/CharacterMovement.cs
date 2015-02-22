@@ -9,30 +9,24 @@ public class CharacterMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
-		GameObject.FindGameObjectsWithTag ("Ground");
+		//GameObject.FindGameObjectsWithTag ("Enemy");
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (speed, 0, 0);
-		if ( Input.GetKeyDown(KeyCode.Space) && !animator.GetBool("isJumping")) {
-			rigidbody2D.AddForce (Vector2.up * jumpForce);
-			animator.SetBool("isJumping", true);
-			animator.SetBool("isMoving", false);
-		}
 		if (Input.touchCount > 0) {
-			if (Input.GetTouch (0).phase == TouchPhase.Began && !animator.GetBool ("isJumping")) {
-				rigidbody2D.AddForce (Vector2.up * jumpForce);
-				animator.SetBool ("isJumping", true);
-				animator.SetBool ("isMoving", false);
-			}
+
 		}
+	}
+
+	void FixedUpdate () {
+		rigidbody2D.velocity = (new Vector2 (speed, 0));
 	}
 	
 	void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag == "Ground"){
-			animator.SetBool("isJumping", false);
-			animator.SetBool("isMoving", true);
+		if(other.gameObject.tag == "Enemy"){
+
 		}
 	}
 }

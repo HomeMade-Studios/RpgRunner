@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 080123b57f4a39e4eacd2bcc0123ff8e
+guid: 3887f3791c6b5d144b837d8d94a9b691
 TextureImporter:
   fileIDToRecycleName:
-    21300000: samurai_moveset_0
-    21300002: samurai_moveset_1
-    21300004: samurai_moveset_2
-    21300006: samurai_moveset_3
-    21300008: samurai_moveset_4
+    21300000: enemies_0
+    21300002: enemies_1
+    21300004: enemies_2
+    21300006: enemies_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,55 +47,25 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: samurai_moveset_0
+    - name: enemies_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 31
-        height: 61
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: samurai_moveset_1
+    - name: enemies_3
       rect:
         serializedVersion: 2
-        x: 31
+        x: 96
         y: 0
-        width: 31
-        height: 61
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: samurai_moveset_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 0
-        width: 31
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: samurai_moveset_3
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 0
-        width: 31
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: samurai_moveset_4
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 0
-        width: 31
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
