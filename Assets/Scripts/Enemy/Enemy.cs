@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("Player");
 		healt = GetComponentInChildren <Slider>();
 		life = maxLife;
+		//Physics.IgnoreLayerCollision(8,8);
 	}
 	
 	// Update is called once per frame
