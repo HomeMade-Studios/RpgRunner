@@ -6,15 +6,16 @@ public class Enemy : MonoBehaviour {
 
 	public float knowback;
 	public int maxLife, strong;
+	CharacterMovement character;
 	int life; 
 	Slider healt;
 
 	// Use this for initialization
 	void Start () {
-		GameObject.FindGameObjectWithTag ("Player");
+		character = GameObject.FindGameObjectWithTag ("Player").GetComponent<CharacterMovement>();
 		healt = GetComponentInChildren <Slider>();
 		life = maxLife;
-		//Physics.IgnoreLayerCollision(8,8);
+		Physics.IgnoreLayerCollision(8,8);
 	}
 	
 	// Update is called once per frame
@@ -26,8 +27,11 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Player"){
+			life -= 10;
+			character.attacked(strong);
 			rigidbody2D.AddForce (new Vector2(knowback,0));
-			life -= 40;
+
+
 		}
 	}
 }

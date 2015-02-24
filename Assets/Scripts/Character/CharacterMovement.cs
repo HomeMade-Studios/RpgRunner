@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterMovement : MonoBehaviour {
 
 	public int speed, jumpForce;
+	int maxLife = 1000, life;
 	public Animator animator;
 	public Vector2 movement = new Vector3(1,0,0);
 
@@ -11,6 +12,7 @@ public class CharacterMovement : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator>();
 		GameObject.FindGameObjectsWithTag ("Enemy");
+		life = maxLife;
 
 	}
 
@@ -32,12 +34,17 @@ public class CharacterMovement : MonoBehaviour {
 		}
 	}
 
+	public void attacked(int strong){
+		life -= (int)(strong * Random.Range (0.5f, 1.5f)); 
+	}
+
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Enemy"){
 
 		}
 		if(other.gameObject.tag == "Ground"){
 			animator.SetBool ("isJumping", false);
+			animator.SetBool ("isMoving", true);
 		}
 	}
 }
