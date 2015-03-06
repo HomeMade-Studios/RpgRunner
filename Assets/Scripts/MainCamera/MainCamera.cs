@@ -7,11 +7,6 @@ public class MainCamera : MonoBehaviour {
 	Transform player;
 	// Use this for initialization
 	void Start () {
-		Screen.orientation = ScreenOrientation.AutoRotation;
-		Screen.autorotateToLandscapeLeft = true;
-		Screen.autorotateToLandscapeRight = true;
-		Screen.autorotateToPortrait = false;
-		Screen.autorotateToPortraitUpsideDown = false;
 		player = GameObject.FindGameObjectWithTag ("Player").transform; 
 	}
 	
