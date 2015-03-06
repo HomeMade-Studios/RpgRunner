@@ -4,10 +4,14 @@ using System.Collections;
 public class MainCamera : MonoBehaviour {
 
 	public GameObject Enemy01;
-	public Transform player;
-	int spawn = 0;
+	Transform player;
 	// Use this for initialization
 	void Start () {
+		Screen.orientation = ScreenOrientation.AutoRotation;
+		Screen.autorotateToLandscapeLeft = true;
+		Screen.autorotateToLandscapeRight = true;
+		Screen.autorotateToPortrait = false;
+		Screen.autorotateToPortraitUpsideDown = false;
 		player = GameObject.FindGameObjectWithTag ("Player").transform; 
 	}
 	
@@ -15,10 +19,5 @@ public class MainCamera : MonoBehaviour {
 	void Update ()
 	{
 		transform.position = new Vector3 (player.position.x+200, 0, -10);
-		if (spawn == 150) {
-			Instantiate (Enemy01, new Vector3(player.position.x + 100, player.position.y, player.position.z), transform.rotation);
-			spawn = 0;
-		} else
-			spawn++;
 	}
 }
