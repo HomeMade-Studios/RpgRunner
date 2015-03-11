@@ -6,8 +6,12 @@ public class Character : MonoBehaviour {
 
 	public int speed, jumpForce;
 	int maxHealth, health, maxMana, mana, strenght;
+	int goldAmount, skillBooksAmount, gemsAmount;
 	public Image healthBar;
 	public Image manaBar;
+	public GameObject gold;
+	public GameObject skillBooks;
+	public GameObject gems;
 	Enemy enemy;
 
 	// Use this for initialization
@@ -18,12 +22,17 @@ public class Character : MonoBehaviour {
 		health = maxHealth;
 		mana = maxMana;
 		strenght = 50;
+		goldAmount = 0;
+		skillBooksAmount = 0;
+		gemsAmount = 0;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		rigidbody2D.velocity = new Vector2 (100, rigidbody2D.velocity.y);
 		HudUpdate ();
+		ValueUpdate ();
+
 	}
 
 	public void Hit(int enemyStrenght){
@@ -35,6 +44,12 @@ public class Character : MonoBehaviour {
 		manaBar.fillAmount = (float)(mana*1)/maxMana;
 		healthBar.GetComponentInChildren<Text>().text = health + "/" + maxHealth;
 		manaBar.GetComponentInChildren<Text>().text = mana + "/" + maxMana;
+	}
+
+	void ValueUpdate(){
+		gold.GetComponentInChildren<Text>().text = goldAmount.ToString();
+		skillBooks.GetComponentInChildren<Text>().text = skillBooksAmount.ToString();
+		gems.GetComponentInChildren<Text>().text = gemsAmount.ToString();
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
