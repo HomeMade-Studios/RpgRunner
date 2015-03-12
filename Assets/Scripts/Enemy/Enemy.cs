@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Hit (int strong){
-		rigidbody2D.AddForce (new Vector2(knockback,0));
+		GetComponent<Rigidbody2D>().AddForce (new Vector2(knockback,0));
 		health -= (int)(strong * Random.Range (0.5f, 1.5f));
 	}
 
