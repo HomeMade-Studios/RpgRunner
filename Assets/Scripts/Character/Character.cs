@@ -33,10 +33,8 @@ public class Character : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Rigidbody2D>().velocity = new Vector2 (100, GetComponent<Rigidbody2D>().velocity.y);
 		HudUpdate ();
 		ValueUpdate ();
-
 	}
 
 	public void Hit(int enemyStrenght){

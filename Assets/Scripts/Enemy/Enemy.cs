@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
 		//gold = GameObject.FindGameObjectWithTag ("Gold");
 		//healthPotion = GameObject.FindGameObjectWithTag ("HealthPotion");
 		//manaPotion = GameObject.FindGameObjectWithTag ("ManaPotion");
+
 		character = GameObject.FindGameObjectWithTag ("Player").GetComponent<Character>();
 		healthBar = GetComponentInChildren <Slider>();
 		health = maxHealth;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.position = Vector2.MoveTowards (transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 50 * Time.deltaTime);
 		healthBar.value = (float)(health*1)/maxHealth;
 		if (health <= 0)
 			Death ();
