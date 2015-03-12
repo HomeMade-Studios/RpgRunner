@@ -7,16 +7,20 @@ public class Character : MonoBehaviour {
 	public int speed, jumpForce;
 	int maxHealth, health, maxMana, mana, strenght;
 	int goldAmount, skillBooksAmount, gemsAmount;
-	public Image healthBar;
-	public Image manaBar;
-	public GameObject gold;
-	public GameObject skillBooks;
-	public GameObject gems;
+	Image healthBar;
+	Image manaBar;
+	GameObject gold;
+	GameObject skillBooks;
+	GameObject gems;
 	Enemy enemy;
 
 	// Use this for initialization
 	void Start () {
-
+		gold = GameObject.FindGameObjectWithTag ("GoldIcon");
+		skillBooks = GameObject.FindGameObjectWithTag ("SkillBooksIcon");
+		gems = GameObject.FindGameObjectWithTag ("GemsIcon");
+		manaBar = GameObject.FindGameObjectWithTag ("ManaBar").GetComponent<Image>();
+		healthBar = GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<Image>();
 		maxHealth = 1000;
 		maxMana = 100;
 		health = maxHealth;

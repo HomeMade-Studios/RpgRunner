@@ -25,7 +25,6 @@ public class GoldDropping : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "GoldIcon") {
 			Destroy(gameObject);
-			print ("banana");
 		}
 	}
 
