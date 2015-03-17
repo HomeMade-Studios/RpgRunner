@@ -4,14 +4,15 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	public int minGoldDrop, maxGoldDrop;
+	public int goldDrop;
 	public int maxHealth, strenght;
 	public float knockback;
-	public GameObject gold, healthPotion, manaPotion;
+
 	Character character;
 	bool dropHealthPotion, dropManaPotion;
 	int health, coinsDrop;
 	Slider healthBar;
+	Drop dropSystem;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour {
 		//manaPotion = GameObject.FindGameObjectWithTag ("ManaPotion");
 
 		character = GameObject.FindGameObjectWithTag ("Player").GetComponent<Character>();
+		dropSystem = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Drop> ();
 		healthBar = GetComponentInChildren <Slider>();
 		health = maxHealth;
 		DropSet ();
@@ -45,22 +47,12 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Death(){
-		Drop ();
+		dropSystem.DropItem (coinsDrop, dropHealthPotion, dropManaPotion, transform.position);
 		Destroy (gameObject);
 	}
 
-	void Drop(){
-		for (int i = 0; i < coinsDrop; i++) {
-			Instantiate (gold, transform.position, transform.rotation);
-		}
-		if(dropHealthPotion)
-			Instantiate (healthPotion, transform.position, transform.rotation);
-		if(dropManaPotion)
-			Instantiate (manaPotion, transform.position, transform.rotation);
-	}
-
 	void DropSet(){
-		coinsDrop = Random.Range (minGoldDrop, maxGoldDrop);
+		coinsDrop = (int)(goldDrop * Random.Range (0.5f, 1.5f));
 		if (Random.Range (1, 20) == 1)
 			dropHealthPotion = true;
 		else
