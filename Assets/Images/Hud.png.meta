@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: aaa069cbaa5d5ff4582c6de2e19dbab8
+timeCreated: 1432325504
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Hud_0
@@ -48,7 +50,11 @@ TextureImporter:
   spritePixelsToUnits: 1
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings: []
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -3
+    compressionQuality: 50
   spriteSheet:
     sprites:
     - name: Hud_0
@@ -58,8 +64,8 @@ TextureImporter:
         y: 16
         width: 83
         height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Hud_1
       rect:

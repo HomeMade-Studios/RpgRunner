@@ -6,48 +6,48 @@ public class Enemy : MonoBehaviour {
 
 	public int goldDrop;
 	public int maxHealth, strenght;
-	public float knockback;
-
-	Character character;
+	
+    float knockback;
+    Transform playerTransform;
 	bool dropHealthPotion, dropManaPotion;
 	int health, coinsDrop;
 	Slider healthBar;
-	Drop dropSystem;
 
-	// Use this for initialization
-	void Start () {
-		//gold = GameObject.FindGameObjectWithTag ("Gold");
-		//healthPotion = GameObject.FindGameObjectWithTag ("HealthPotion");
-		//manaPotion = GameObject.FindGameObjectWithTag ("ManaPotion");
-
-		character = GameObject.FindGameObjectWithTag ("Player").GetComponent<Character>();
-		dropSystem = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Drop> ();
+	
+    void Awake(){
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 		healthBar = GetComponentInChildren <Slider>();
 		health = maxHealth;
+        knockback = 200;
+    }
+
+	void Start () {
 		DropSet ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		transform.position = Vector2.MoveTowards (transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 50 * Time.deltaTime);
-		healthBar.value = (float)(health*1)/maxHealth;
-		if (health <= 0)
-			Death ();
+	void FixedUpdate () {
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, 50 * Time.deltaTime);
 	}
 
-	void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag == "Player"){
-			character.Hit(strenght);
+    void Update() {
+        healthBar.value = (float)(health * 1) / maxHealth;
+        if (health <= 0)
+            Death();
+    }
+
+	void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Player") {
+			Player.Hit(strenght);
 		}
 	}
 
 	public void Hit (int strong){
-		GetComponent<Rigidbody2D>().AddForce (new Vector2(knockback,0));
+		GetComponent<Rigidbody2D>().AddForce (new Vector2 (knockback, 0), ForceMode2D.Impulse);
 		health -= (int)(strong * Random.Range (0.5f, 1.5f));
 	}
 
 	void Death(){
-		dropSystem.DropItem (coinsDrop, dropHealthPotion, dropManaPotion, transform.position);
+		Drop.DropItem (coinsDrop, dropHealthPotion, dropManaPotion, transform.position);
 		Destroy (gameObject);
 	}
 
